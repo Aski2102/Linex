@@ -1,3 +1,5 @@
 .spyderproject
+.spyproject
+.pytest_cache
 __pycache__
 docs/_build
