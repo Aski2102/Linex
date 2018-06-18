@@ -10,7 +10,8 @@ def read_input(inputfile):
         inputfile: Name of the input file.
 
     Returns:
-        Content of the input file.
+        Tuple (a, b) with the coefficient matrix a and the right hand side
+        vector b.
     '''
     try:
         with open(inputfile, 'r') as fp:
@@ -19,19 +20,30 @@ def read_input(inputfile):
         print("Failed to read input file '{}'".format(inputfile))
         print("Execption raised: {}".format(exc))
         sys.exit(1)
-    return inp
+    aa, bb = _parse_input(inp)
+    return aa, bb
 
 
-def parse_input(inp):
-    '''Parses the content of the input file.
+def read_result(resultfile):
+    '''Reads the result written by the solver (used for testing).
 
     Args:
-        inp: Content of the input file.
+        resultfile: Result file to read.
 
     Returns:
-        Tuple (a, b) with the coefficient matrix a and the right hand side
-        vector b.
+        Result vector x.
     '''
+    with open(resultfile, 'r') as fp:
+        res = fp.read()
+    if res.startswith('ERROR'):
+        xx = None
+    else:
+        numbers = [float(word) for word in res.split()]
+        xx = np.array(numbers)
+    return xx
+
+
+def _parse_input(inp):
     lines = [line.strip() for line in inp.split('\n')]
     nvar = int(lines[0])
     aa = np.empty((nvar, nvar), dtype=float)

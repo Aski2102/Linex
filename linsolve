@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 '''Solves a linear system of equations.'''
 import solvers
-import io
+import linsolveio as io
 
 INPUT_FILE = 'linsolve.in'
 OUTPUT_FILE = 'linsolve.out'
@@ -9,8 +9,7 @@ OUTPUT_FILE = 'linsolve.out'
 
 def main():
     '''Main driver routine.'''
-    inp = io.read_input(INPUT_FILE)
-    aa, bb = io.parse_input(inp)
+    aa, bb = io.read_input(INPUT_FILE)
     xx = solvers.gaussian_eliminate(aa, bb)
     io.write_result(OUTPUT_FILE, xx)
 
