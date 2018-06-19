@@ -38,3 +38,4 @@ def test_elimination(testname):
         assert xx_gauss is None
     else:
         assert np.all(np.abs(xx_gauss - xx_expected) < TOLERANCE)
+

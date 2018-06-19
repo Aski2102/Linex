@@ -74,3 +74,4 @@ def write_result(filename, xx):
         print("Failed to write result file '{}'".format(filename))
         print("Execption raised: {}".format(exc))
         sys.exit(1)
+

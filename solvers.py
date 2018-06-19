@@ -53,3 +53,4 @@ def _make_partial_pivot(aa, bb, icol):
         tmp = np.array(bb[0])
         bb[0] = bb[imax]
         bb[imax] = tmp
+
